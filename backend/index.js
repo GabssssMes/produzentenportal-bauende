@@ -23,11 +23,10 @@ app.get("*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server runnin on ${PORT}`);
 });
-deleteFilesOlderThan("./Documents/Uploads", 7200000);
 
 setInterval(() => {
   deleteFilesOlderThan("./Documents/Uploads", 7200000);
-}, 1800000);
+}, 300000);
 
 const deleteFilesOlderThan = (directory, time) => {
   fs.readdir(directory, function (err, files) {
