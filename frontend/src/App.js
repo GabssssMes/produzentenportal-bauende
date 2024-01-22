@@ -68,9 +68,10 @@ function App() {
       setFile("");
       return;
     }
-    const PORT = process.env.PORT || 8000;
-    const url = "http://localhost:" + PORT + "/uploadFile";
-    //const url = "https://test-parte-2.onrender.com/uploadFile";
+    //const PORT = process.env.PORT || 8000;
+    //const url = "http://localhost:" + PORT + "/uploadFile";
+    const url =
+      "https://produzentenportal-bauende-production.up.railway.app/uploadFile";
     const formData = new FormData();
     formData.append("file", fileToUse);
     formData.append("fileName", fileToUse.name);
@@ -133,9 +134,10 @@ function App() {
     }
 
     event.preventDefault();
-    const PORT = process.env.PORT || 8000;
-    const url = "http://localhost:" + PORT + "/uploadSpi";
-    //const url = "https://test-parte-2.onrender.com/uploadSpi";
+    //const PORT = process.env.PORT || 8000;
+    //const url = "http://localhost:" + PORT + "/uploadSpi";
+    const url =
+      "https://produzentenportal-bauende-production.up.railway.app/uploadSpi";
 
     const formData = new FormData();
     formData.append("file", fileToUse);
@@ -211,10 +213,11 @@ function App() {
     const id = toast.loading("Bitte warten, ihre Daten werden übermittelt.", {
       autoClose: false,
     });
-    const PORT = process.env.PORT || 8000;
-    const url = "http://localhost:" + PORT + "/sendData";
+    //const PORT = process.env.PORT || 8000;
+    //const url = "http://localhost:" + PORT + "/sendData";
 
-    //const url = "https://test-parte-2.onrender.com/sendData";
+    const url =
+      "https://produzentenportal-bauende-production.up.railway.app/sendData";
 
     axios
       .post(url, data)

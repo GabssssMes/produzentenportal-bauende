@@ -25,7 +25,7 @@ app.listen(PORT, () => {
 });
 
 setInterval(() => {
-  deleteFilesOlderThan("./Documents/Uploads", 7200000);
+  deleteFilesOlderThan("./backend/Documents/Uploads", 7200000);
 }, 300000);
 
 const deleteFilesOlderThan = (directory, time) => {

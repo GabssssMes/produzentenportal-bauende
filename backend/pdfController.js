@@ -76,22 +76,24 @@ sendMail = async (
       {
         filename: Konformfilename[Konformfilename.length - 1],
         path:
-          "./Documents/Uploads/" + Konformfilename[Konformfilename.length - 1],
+          "./backend/Documents/Uploads/" +
+          Konformfilename[Konformfilename.length - 1],
       },
       {
         filename: SpiFilename[SpiFilename.length - 1],
-        path: "./Documents/Uploads/" + SpiFilename[SpiFilename.length - 1],
+        path:
+          "./backend/Documents/Uploads/" + SpiFilename[SpiFilename.length - 1],
       },
     ],
   });
 
   console.log("Ihre Daten wurden erfolgreich gespeichert!");
   for (let i = Konformfilename.length - 1; i > -1; i--) {
-    unlinkSync("./Documents/Uploads/" + Konformfilename[i]);
+    unlinkSync("./backend/Documents/Uploads/" + Konformfilename[i]);
     Konformfilename.pop();
   }
   for (i = SpiFilename.length - 1; i > -1; i--) {
-    unlinkSync("./Documents/Uploads/" + SpiFilename[i]);
+    unlinkSync("./backend/Documents/Uploads/" + SpiFilename[i]);
     SpiFilename.pop();
   }
 };
