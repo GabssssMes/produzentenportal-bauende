@@ -1,0 +1,50 @@
+.divButton {
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(255, 0, 0);
+  padding: 5px 20px;
+  border-radius: 5px;
+  color: #fff;
+}
+.buttons {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  margin-bottom: 15px;
+  justify-content: space-between;
+}
+#buttonAdd {
+  width: 100%;
+  background-color: rgb(88, 56, 250);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttonAdd:hover {
+  cursor: pointer;
+}
+#buttonRemove {
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttonRemove:hover {
+  cursor: pointer;
+}
+.inputfield {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 3px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+  margin-bottom: 10px;
+}
+.element {
+}

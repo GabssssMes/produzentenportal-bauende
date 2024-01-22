@@ -1,0 +1,49 @@
+const express = require("express");
+const path = require("path");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const app = express();
+const pdfRoute = require("./pdfRoutes");
+const fs = require("fs");
+
+dotenv.config();
+
+const PORT = process.env.PORT || 8000;
+const buildPath = path.join(__dirname, "../frontend/build");
+
+app.use(express.static(buildPath));
+app.use(express.json());
+app.use(cors());
+app.use(pdfRoute);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(buildPath, "index.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server runnin on ${PORT}`);
+});
+deleteFilesOlderThan("./Documents/Uploads", 7200000);
+
+setInterval(() => {
+  deleteFilesOlderThan("./Documents/Uploads", 7200000);
+}, 1800000);
+
+const deleteFilesOlderThan = (directory, time) => {
+  fs.readdir(directory, function (err, files) {
+    files.forEach(function (file, index) {
+      fs.stat(directory + "/" + file, function (err, stat) {
+        var endTime, now;
+        if (err) {
+          return console.error(err);
+        }
+        now = new Date().getTime();
+        endTime = new Date(stat.ctime).getTime() + time;
+        if (now > endTime) {
+          console.log("enter");
+          fs.unlinkSync(directory + "/" + file);
+        }
+      });
+    });
+  });
+};
