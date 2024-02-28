@@ -70,7 +70,7 @@ sendMail = async (
   const info = await transporter.sendMail({
     from: "gabrielmaler789@gmail.com",
     to: "formulare.automatisiert@gmail.com",
-    subject: "Parte 2 von " + FullName,
+    subject: "Bauende von " + FullName,
     text: "Bauende: " + Bauende + "\n" + textWechselrichter,
     attachments: [
       {

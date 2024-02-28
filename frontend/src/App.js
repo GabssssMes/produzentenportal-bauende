@@ -68,6 +68,26 @@ function App() {
       setFile("");
       return;
     }
+    if (fileToUse.size > 12000000) {
+      toast.error(
+        "Das ausgewählte File ist zu groß: " +
+          (fileToUse.size / 1000000).toFixed(2) +
+          " MB (Max: 12 MB)",
+        {
+          position: "top-center",
+          autoClose: 10000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+
+      setFile("");
+      return;
+    }
     //const PORT = process.env.PORT || 8000;
     //const url = "http://localhost:" + PORT + "/uploadFile";
     const url =
@@ -129,6 +149,26 @@ function App() {
         progress: undefined,
         theme: "dark",
       });
+      setFileSpi("");
+      return;
+    }
+    if (fileToUse.size > 12000000) {
+      toast.error(
+        "Das ausgewählte File ist zu groß: " +
+          (fileToUse.size / 1000000).toFixed(2) +
+          " MB (Max: 12 MB)",
+        {
+          position: "top-center",
+          autoClose: 10000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+
       setFileSpi("");
       return;
     }
