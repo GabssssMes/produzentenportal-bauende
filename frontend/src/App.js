@@ -5,7 +5,7 @@ import { PVData, Konform, Spiii } from "./components/SetDataFields";
 import { useState } from "react";
 import axios from "axios";
 import { useRef } from "react";
-import { flushSync } from "react-dom";
+//import { flushSync } from "react-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import uniqid from "uniqid";
@@ -27,8 +27,8 @@ function App() {
 
   const [isButtonenabled, setButtonenabled] = useState(false);
 
-  const [file, setFile] = useState();
-  const [fileSpi, setFileSpi] = useState();
+  //const [file, setFile] = useState();
+  //const [fileSpi, setFileSpi] = useState();
   const hiddenFileInput = useRef(null);
   const hiddenFileInputSpi = useRef(null);
   const [uploadedFileURL, setUploadedFileURL] = useState(
@@ -40,16 +40,7 @@ function App() {
   function handleUpload(event, fileToUse) {
     event.preventDefault();
     if (fileToUse === undefined) {
-      toast.warning("Bitte wählen Sie eine Datei aus!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      //setUploadedFileURL("Es wurde noch keine Datei hochgeladen!");
       return;
     }
     let format = fileToUse.name.split(".");
@@ -65,7 +56,7 @@ function App() {
         theme: "dark",
       });
 
-      setFile("");
+      //setFile("");
       return;
     }
     if (fileToUse.size > 12000000) {
@@ -85,9 +76,15 @@ function App() {
         }
       );
 
-      setFile("");
+      //setFile("");
       return;
     }
+    const toastid = toast.loading(
+      '"' + fileToUse.name + '" wird hochgeladen!',
+      {
+        autoClose: false,
+      }
+    );
     //const PORT = process.env.PORT || 8000;
     //const url = "http://localhost:" + PORT + "/uploadFile";
     const url =
@@ -110,31 +107,18 @@ function App() {
       let copy = Object.assign({}, Erklärung);
       copy.filename.push(response.data);
       setErklärung(copy);
-      toast.success('"' + stringURL + '" wurde erfolgreich hochgeladen!', {
-        position: "top-center",
+      toast.update(toastid, {
+        render: '"' + stringURL + '" wurde erfolgreich hochgeladen!',
+        type: "success",
+        isLoading: false,
         autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
       });
     });
   }
   function handleUploadSpi(event, fileToUse) {
     event.preventDefault();
     if (fileToUse === undefined) {
-      toast.warning("Bitte wählen Sie eine Datei aus!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      //setUploadedFileURLSpi("Es wurde noch keine Datei hochgeladen!");
       return;
     }
     let format = fileToUse.name.split(".");
@@ -149,7 +133,7 @@ function App() {
         progress: undefined,
         theme: "dark",
       });
-      setFileSpi("");
+      //setFileSpi("");
       return;
     }
     if (fileToUse.size > 12000000) {
@@ -169,11 +153,16 @@ function App() {
         }
       );
 
-      setFileSpi("");
+      //setFileSpi("");
       return;
     }
 
-    event.preventDefault();
+    const toastid = toast.loading(
+      '"' + fileToUse.name + '" wird hochgeladen!',
+      {
+        autoClose: false,
+      }
+    );
     //const PORT = process.env.PORT || 8000;
     //const url = "http://localhost:" + PORT + "/uploadSpi";
     const url =
@@ -199,22 +188,18 @@ function App() {
       let copy = Object.assign({}, Spi);
       copy.filename.push(response.data);
       setSpi(copy);
-      toast.success('"' + stringURL + '" wurde erfolgreich hochgeladen!', {
-        position: "top-center",
+      toast.update(toastid, {
+        render: '"' + stringURL + '" wurde erfolgreich hochgeladen!',
+        type: "success",
+        isLoading: false,
         autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
       });
     });
   }
 
   const sendData = async (e) => {
     e.preventDefault();
-    if (file === undefined) {
+    if (uploadedFileURL === "Es wurde noch keine Datei hochgeladen!") {
       toast.warning(
         "Sie müssen noch eine Kopie mit Ihrer Konformitätserklärung hochladen.",
         {
@@ -230,7 +215,7 @@ function App() {
       );
       return;
     }
-    if (fileSpi === undefined) {
+    if (uploadedFileURLSpi === "Es wurde noch keine Datei hochgeladen!") {
       toast.warning("Sie müssen noch eine Kopie Ihres SPI hochladen.", {
         position: "top-center",
         autoClose: 5000,
@@ -279,9 +264,9 @@ function App() {
     hiddenFileInput.current.click();
   };
   const handleChange = (event) => {
-    flushSync(() => {
-      setFile(event.target.files[0]);
-    });
+    //flushSync(() => {
+    //  setFile(event.target.files[0]);
+    //});
     handleUpload(event, event.target.files[0]);
   };
 
@@ -289,9 +274,9 @@ function App() {
     hiddenFileInputSpi.current.click();
   };
   const handleChangeSpi = (event) => {
-    flushSync(() => {
-      setFileSpi(event.target.files[0]);
-    });
+    //flushSync(() => {
+    //  setFileSpi(event.target.files[0]);
+    //});
     handleUploadSpi(event, event.target.files[0]);
   };
   const handleChangePvData = () => (e) => {
