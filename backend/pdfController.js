@@ -64,7 +64,7 @@ sendMail = async (
     secure: true,
     auth: {
       user: "messner92@gmail.com",
-      pass: "ddhskjinsnbfeeub",
+      pass: "ihtseyrpztlqpvdd",
     },
   });
   const info = await transporter.sendMail({
