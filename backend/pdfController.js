@@ -63,12 +63,12 @@ sendMail = async (
     port: 465,
     secure: true,
     auth: {
-      user: "messner92@gmail.com",
-      pass: "ihtseyrpztlqpvdd",
+      user: "gabrielmaler789@gmail.com",
+      pass: "owvmuijpjvbqrqpe",
     },
   });
   const info = await transporter.sendMail({
-    from: "messner92@gmail.com",
+    from: "gabrielmaler789@gmail.com",
     to: "formulare.automatisiert@gmail.com",
     subject: "Bauende von " + FullName,
     text: "Bauende: " + Bauende + "\n" + textWechselrichter,
