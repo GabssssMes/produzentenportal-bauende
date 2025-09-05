@@ -27,7 +27,7 @@ function App() {
 
   const [isButtonenabled, setButtonenabled] = useState(false);
 
-  //const [file, setFile] = useState();
+  //const [file, setFile] = useState();//Testkommentar
   //const [fileSpi, setFileSpi] = useState();
   const hiddenFileInput = useRef(null);
   const hiddenFileInputSpi = useRef(null);
