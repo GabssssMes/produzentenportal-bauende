@@ -1,5 +1,9 @@
 const { unlinkSync } = require("fs");
 const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
+const email = process.env.E_MAIL;
+const emailpasswort = process.env.E_MAIL_PASSWORT;
+dotenv.config();
 
 exports.uploadFile = async (req, res) => {
   // console.log(req.body);
@@ -62,13 +66,13 @@ sendMail = async (
     host: "smtp.gmail.com",
     port: 465,
     secure: true,
-    auth: {
-      user: "messner92@gmail.com",
-      pass: "ihtseyrpztlqpvdd",
+    auth:  {
+      user: email,
+      pass: emailpasswort,
     },
   });
   const info = await transporter.sendMail({
-    from: "messner92@gmail.com",
+    from: email,
     to: "formulare.automatisiert@gmail.com",
     subject: "Bauende von " + FullName,
     text: "Bauende: " + Bauende + "\n" + textWechselrichter,
